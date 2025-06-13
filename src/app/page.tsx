@@ -93,6 +93,9 @@ export default function Home() {
           onMouseDown={handleSpin}
           onMouseUp={handleStopSpin}
           onMouseLeave={handleStopSpin}
+          onTouchStart={handleSpin}
+          onTouchEnd={handleStopSpin}
+          onTouchCancel={handleStopSpin}
           disabled={isSpinning && !isSpinButtonHeld || options.length === 0}
           className="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
         >
