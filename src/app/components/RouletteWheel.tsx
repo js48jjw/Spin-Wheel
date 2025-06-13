@@ -27,7 +27,7 @@ const RouletteWheel: React.FC<RouletteWheelProps> = ({ options, isSpinning, onOp
         let desiredStopAngle = 360 - (segmentCenterAngle % 360);
         desiredStopAngle = (desiredStopAngle % 360 + 360) % 360;
 
-        const numFullSpins = 3;
+        const numFullSpins = 1;
         const baseRotation = numFullSpins * 360;
 
         const currentEffectiveRotation = prevRotation % 360;
@@ -57,8 +57,8 @@ const RouletteWheel: React.FC<RouletteWheelProps> = ({ options, isSpinning, onOp
         className="absolute w-full h-full rounded-full border-4 border-gray-800 flex items-center justify-center"
         animate={{ rotate: rotation }}
         transition={{
-          duration: isContinuousSpin ? 5 : 6,
-          ease: isContinuousSpin ? "linear" : "circOut",
+          duration: isContinuousSpin ? 5 : 8,
+          ease: isContinuousSpin ? "linear" : [0.0, 1.0, 0.5, 1.0],
           repeat: isContinuousSpin ? Infinity : 0,
         }}
       >
