@@ -88,10 +88,10 @@ export default function Home() {
       <div style={{ position: 'fixed', top: 0, left: '50%', transform: 'translateX(-50%)', zIndex: 50 }}>
         <ins
           className="kakao_ad_area"
-          style={{ display: 'block', width: '320px', height: '100px' }}
+          style={{ display: 'block', width: '320px', height: '50px' }}
           data-ad-unit="DAN-4m4RgcDeG5AHjoxO"
           data-ad-width="320"
-          data-ad-height="100"
+          data-ad-height="50"
         ></ins>
       </div>
       <div className="flex flex-col items-center gap-6">
