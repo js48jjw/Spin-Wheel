@@ -58,7 +58,7 @@ const ResultModal: React.FC<ResultModalProps> = ({ result, onClose }) => {
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto rounded-full"></div>
         </div>
-        <p className="text-2xl mb-8">
+        <p className="text-2xl mb-8 text-gray-700">
           최종결과: <span className="font-bold text-indigo-600">{result}</span>
         </p>
         <button

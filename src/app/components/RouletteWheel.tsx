@@ -83,7 +83,7 @@ const RouletteWheel: React.FC<RouletteWheelProps> = ({ options, isSpinning, onOp
             const textY = 50 + textRadius * Math.sin((startAngle + segmentAngle / 2) * Math.PI / 180);
 
             return (
-              <g key={index} className="cursor-pointer" onClick={() => onOptionClick(option)}>
+              <g key={index} className="cursor-pointer" onClick={() => { if (!isSpinning) onOptionClick(option); }}>
                 <path d={d} fill={color} stroke="#fff" strokeWidth="0.5" />
                 <text
                   x={textX}

@@ -24,6 +24,18 @@ export default function Home() {
     }
   }, [isSpinning]);
 
+  useEffect(() => {
+    // 광고 스크립트 동적 삽입
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.async = true;
+    script.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   const handleSpin = () => {
     if (options.length === 0) return;
 
@@ -71,8 +83,18 @@ export default function Home() {
   };
 
   return (
-    <main className="h-[100dvh] flex flex-col items-center justify-center bg-gradient-to-b from-blue-50 to-indigo-100 p-4 overflow-hidden">
-      <div className="flex flex-col items-center gap-12">
+    <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-50 to-indigo-100 p-4 overflow-hidden">
+      {/* 광고 배너 상단 고정 */}
+      <div style={{ position: 'fixed', top: 0, left: '50%', transform: 'translateX(-50%)', zIndex: 50 }}>
+        <ins
+          className="kakao_ad_area"
+          style={{ display: 'block', width: '320px', height: '100px' }}
+          data-ad-unit="DAN-4m4RgcDeG5AHjoxO"
+          data-ad-width="320"
+          data-ad-height="100"
+        ></ins>
+      </div>
+      <div className="flex flex-col items-center gap-6">
         <h1 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
           돌려돌려~ 돌림판
         </h1>
@@ -110,17 +132,18 @@ export default function Home() {
             value={newOptionText}
             onChange={(e) => setNewOptionText(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' && newOptionText.trim() !== '') {
+              if (e.key === 'Enter' && newOptionText.trim() !== '' && !isSpinning) {
                 handleAddOption();
               }
             }}
             placeholder="새 옵션 추가" 
-            className="px-4 py-2 border-2 border-indigo-200 rounded-full flex-1 text-sm focus:outline-none focus:border-indigo-500 transition-colors duration-300 bg-white/80 backdrop-blur-sm"
+            className="px-4 py-2 border-2 border-indigo-200 rounded-full flex-1 text-sm focus:outline-none focus:border-indigo-500 transition-colors duration-300 bg-white/80 backdrop-blur-sm placeholder:text-gray-500 text-gray-700"
+            readOnly={isSpinning}
           />
           <button
-            onClick={handleAddOption}
+            onClick={() => { if (!isSpinning) handleAddOption(); }}
             className="px-5 h-[38px] bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-full hover:from-green-600 hover:to-emerald-700 whitespace-nowrap text-sm font-medium shadow-md hover:shadow-lg transition-all duration-300"
-            disabled={newOptionText.trim() === ''}
+            disabled={newOptionText.trim() === '' || isSpinning}
           >
             추가
           </button>
@@ -130,6 +153,17 @@ export default function Home() {
       {result && !isSpinning && (
         <ResultModal result={result} onClose={() => setResult(null)} />
       )}
+
+      {/* 하단 광고 배너 고정 */}
+      <div style={{ position: 'fixed', bottom: 0, left: '50%', transform: 'translateX(-50%)', zIndex: 50 }}>
+        <ins
+          className="kakao_ad_area"
+          style={{ display: 'block', width: '320px', height: '50px' }}
+          data-ad-unit="DAN-N1miBJRBh0sFRAUz"
+          data-ad-width="320"
+          data-ad-height="50"
+        ></ins>
+      </div>
     </main>
   );
 }
