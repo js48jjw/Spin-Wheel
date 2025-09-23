@@ -46,6 +46,26 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        {/* Left banner */}
+        <a
+          href="https://pmioham9d3.sens.kr"
+          className="side-banner side-banner--left"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="DBSense Left Banner"
+        >
+          <img src="/dbsense-banner-left.png" alt="Left Promotion" width={160} />
+        </a>
+        {/* Right banner */}
+        <a
+          href="https://ig8rt9xz3i.sens.kr"
+          className="side-banner side-banner--right"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="DBSense Right Banner"
+        >
+          <img src="/dbsense-banner-right.png" alt="Right Promotion" width={160} />
+        </a>
       </body>
     </html>
   );

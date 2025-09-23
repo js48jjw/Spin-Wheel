@@ -24,3 +24,34 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Side banners - hidden by default (mobile) */
+.side-banner {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 160px;
+  display: none;
+  z-index: 1000;
+}
+
+.side-banner img {
+  width: 160px;
+  height: auto;
+  display: block;
+}
+
+.side-banner--left {
+  left: 0;
+}
+
+.side-banner--right {
+  right: 0;
+}
+
+/* Show on PC only (width >= 1100px) */
+@media (min-width: 1100px) {
+  .side-banner {
+    display: block;
+  }
+}
