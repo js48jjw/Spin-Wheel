@@ -29,7 +29,7 @@ export default function Home() {
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.async = true;
-    script.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+    script.src = '//t1.kakaocdn.net/kas/static/ba.min.js';
     document.body.appendChild(script);
     return () => {
       document.body.removeChild(script);
